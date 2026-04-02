@@ -375,20 +375,136 @@ html, body, [class*="css"] {
     font-family: 'Sora', sans-serif;
 }
 
+/* ── DARK MODE ── */
+[data-theme="dark"] .stApp,
 .stApp {
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    min-height: 100vh;
-    color: #e8e8ff;
 }
 
+[data-theme="dark"] .hero-box,
+.hero-box {
+    background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(99,102,241,0.1));
+    border: 1px solid rgba(167,139,250,0.3);
+}
+
+[data-theme="dark"] .question-card,
+.question-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(167,139,250,0.2);
+}
+
+[data-theme="dark"] .info-chip,
+.info-chip {
+    background: rgba(255,255,255,0.07);
+    color: #c4b5fd;
+}
+
+[data-theme="dark"] .result-card,
+.result-card {
+    background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(96,165,250,0.1));
+}
+
+[data-theme="dark"] .state-desc,
+.state-desc {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .error-box,
+.error-box {
+    color: #fca5a5;
+}
+
+/* ── LIGHT MODE OVERRIDES ── */
+[data-theme="light"] .stApp {
+    background: linear-gradient(135deg, #ede9fe, #e0e7ff, #f0f4ff) !important;
+}
+
+[data-theme="light"] .hero-box {
+    background: linear-gradient(135deg, rgba(109,40,217,0.08), rgba(79,70,229,0.06)) !important;
+    border: 1px solid rgba(109,40,217,0.25) !important;
+}
+
+[data-theme="light"] .question-card {
+    background: rgba(255,255,255,0.7) !important;
+    border: 1px solid rgba(109,40,217,0.2) !important;
+}
+
+[data-theme="light"] .info-chip {
+    background: rgba(109,40,217,0.08) !important;
+    color: #5b21b6 !important;
+    border: 1px solid rgba(109,40,217,0.2) !important;
+}
+
+[data-theme="light"] .result-card {
+    background: linear-gradient(135deg, rgba(109,40,217,0.1), rgba(96,165,250,0.08)) !important;
+    border: 1px solid rgba(109,40,217,0.3) !important;
+}
+
+[data-theme="light"] .state-desc {
+    color: #374151 !important;
+}
+
+[data-theme="light"] .error-box {
+    color: #b91c1c !important;
+    background: rgba(239,68,68,0.08) !important;
+}
+
+[data-theme="light"] .hero-sub {
+    color: #4b5563 !important;
+}
+
+/* ── INPUT TEXT FIX — visible in both modes ── */
+/* Force dark text in light mode inputs */
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="number"],
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] .stTextInput input {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+    border: 1px solid rgba(109,40,217,0.35) !important;
+}
+
+/* Force light text in dark mode inputs */
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] .stTextInput input {
+    color: #f1f5f9 !important;
+    background-color: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(167,139,250,0.3) !important;
+}
+
+/* Fallback for when theme attr not set (default = dark) */
+.stTextInput input {
+    color: #f1f5f9 !important;
+    background-color: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(167,139,250,0.3) !important;
+    border-radius: 10px !important;
+}
+
+/* Placeholder text */
+[data-theme="light"] .stTextInput input::placeholder {
+    color: #9ca3af !important;
+}
+[data-theme="dark"] .stTextInput input::placeholder {
+    color: #64748b !important;
+}
+
+/* ── SHARED STYLES ── */
 h1, h2, h3 {
     color: #a78bfa !important;
     font-weight: 700;
 }
 
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3 {
+    color: #6d28d9 !important;
+}
+
 .hero-box {
-    background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(99,102,241,0.1));
-    border: 1px solid rgba(167,139,250,0.3);
     border-radius: 20px;
     padding: 2.5rem;
     margin-bottom: 2rem;
@@ -410,8 +526,6 @@ h1, h2, h3 {
 }
 
 .question-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(167,139,250,0.2);
     border-radius: 14px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -419,7 +533,7 @@ h1, h2, h3 {
 }
 
 .question-card:hover {
-    border-color: rgba(167,139,250,0.5);
+    border-color: rgba(167,139,250,0.5) !important;
 }
 
 .q-number {
@@ -431,8 +545,11 @@ h1, h2, h3 {
     margin-bottom: 0.4rem;
 }
 
+[data-theme="light"] .q-number {
+    color: #7c3aed;
+}
+
 .result-card {
-    background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(96,165,250,0.1));
     border: 1px solid rgba(167,139,250,0.4);
     border-radius: 20px;
     padding: 2rem;
@@ -456,8 +573,11 @@ h1, h2, h3 {
     margin-top: 0.5rem;
 }
 
+[data-theme="light"] .state-label {
+    color: #6d28d9;
+}
+
 .state-desc {
-    color: #cbd5e1;
     font-size: 0.95rem;
     margin-top: 1rem;
     line-height: 1.7;
@@ -472,12 +592,10 @@ h1, h2, h3 {
 }
 
 .info-chip {
-    background: rgba(255,255,255,0.07);
     border: 1px solid rgba(167,139,250,0.25);
     border-radius: 30px;
     padding: 0.3rem 1rem;
     font-size: 0.85rem;
-    color: #c4b5fd;
     font-family: 'JetBrains Mono', monospace;
 }
 
@@ -496,21 +614,6 @@ h1, h2, h3 {
     opacity: 0.85 !important;
 }
 
-.stRadio > div {
-    gap: 0.3rem !important;
-}
-
-div[data-testid="stRadio"] label {
-    color: #cbd5e1 !important;
-}
-
-.stTextInput input, .stSelectbox select {
-    background: rgba(255,255,255,0.06) !important;
-    border: 1px solid rgba(167,139,250,0.3) !important;
-    border-radius: 10px !important;
-    color: #e8e8ff !important;
-}
-
 .stDownloadButton > button {
     background: rgba(167,139,250,0.15) !important;
     border: 1px solid rgba(167,139,250,0.4) !important;
@@ -519,12 +622,17 @@ div[data-testid="stRadio"] label {
     font-family: 'Sora', sans-serif !important;
 }
 
+[data-theme="light"] .stDownloadButton > button {
+    color: #6d28d9 !important;
+    background: rgba(109,40,217,0.08) !important;
+    border: 1px solid rgba(109,40,217,0.3) !important;
+}
+
 .error-box {
     background: rgba(239,68,68,0.1);
     border: 1px solid rgba(239,68,68,0.3);
     border-radius: 10px;
     padding: 0.8rem 1.2rem;
-    color: #fca5a5;
     font-size: 0.9rem;
     margin-top: 0.5rem;
 }
@@ -541,6 +649,10 @@ div[data-testid="stRadio"] label {
     height: 8px;
     margin: 1rem 0 2rem 0;
     overflow: hidden;
+}
+
+[data-theme="light"] .progress-bar-container {
+    background: rgba(0,0,0,0.08);
 }
 
 .progress-bar-fill {
